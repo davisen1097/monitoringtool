@@ -8,5 +8,5 @@ if(isset($_SESSION['user_id']))
 
 }
 
-header("Location: https://davisen-website-monitoring-tool.netlify.app/");
+header("Location: login.php");
 die;
