@@ -12,7 +12,7 @@ $user_data = check_login($con);
 <html>
 
 <head>
-    <title>My website</title>
+    <title>Login state of user</title>
 </head>
 
 <body>

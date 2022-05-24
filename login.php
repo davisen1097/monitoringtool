@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Login Page</title>
 </head>
 
 <body>
