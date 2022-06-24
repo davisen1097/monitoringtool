@@ -114,10 +114,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <header>
     <div class="topnav">
       <a class="active" href="#home">Home</a>
-      <a href="#Button1">Button11</a>
-      <a href="#Button2">Button22</a>
+
+      <a href="#Button2">Buttontest</a>
       <div class="topnav-right">
-        <button onclick="window.location.href='login.php'">Login</button>
+        
          &nbsp&nbsp&nbsp;
          
          <button onclick="window.location.href='signup.php'">Signup</button>
@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
   </header>
 
-  <br /><br /><br /><br /><br /><br /><br /><br />
+  <br /><br /><br /><br />
 
     <div id="box">
 
