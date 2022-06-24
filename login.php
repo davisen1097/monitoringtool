@@ -77,6 +77,40 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     </style>
 
+<style type="text/css">
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  .topnav-right {
+    float: right;
+    padding-top: 0.3cm;
+    padding-right:0.5cm;
+  }
+
+  </style>
+
 <header>
     <div class="topnav">
       <a class="active" href="#home">Home</a>
