@@ -77,55 +77,53 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     </style>
 
-<style type="text/css">
+    <style type="text/css">
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
 
-.topnav {
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .topnav a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
-  
-  .topnav-right {
-    float: right;
-    padding-top: 0.3cm;
-    padding-right:0.5cm;
-  }
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
 
-  </style>
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
 
-<header>
-    <div class="topnav">
-      <a class="active" href="#home">Home</a>
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
 
-      <a href="#Button2">Buttontest</a>
-      <div class="topnav-right">
-        
-         &nbsp&nbsp&nbsp;
-         
-         <button onclick="window.location.href='signup.php'">Signup</button>
-      </div>
-    </div>
-  </header>
+        .topnav-right {
+            float: right;
+            padding-top: 0.3cm;
+            padding-right: 0.5cm;
+        }
+    </style>
 
-  <br /><br /><br /><br />
+    <header>
+        <div class="topnav">
+            <a class="active" href="#home">Home</a>
+
+            <a href="#Button2">Buttontest</a>
+            <div class="topnav-right">
+
+                &nbsp&nbsp&nbsp;
+
+                <button onclick="window.location.href='signup.php'">Signup</button>
+            </div>
+        </div>
+    </header>
+
+    <br /><br /><br /><br />
 
     <div id="box">
 
