@@ -77,6 +77,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     </style>
 
+<header>
+    <div class="topnav">
+      <a class="active" href="#home">Home</a>
+      <a href="#Button1">Button11</a>
+      <a href="#Button2">Button22</a>
+      <div class="topnav-right">
+        <button onclick="window.location.href='login.php'">Login</button>
+         &nbsp&nbsp&nbsp;
+         
+         <button onclick="window.location.href='signup.php'">Signup</button>
+      </div>
+    </div>
+  </header>
+
     <div id="box">
 
         <form method="post">
