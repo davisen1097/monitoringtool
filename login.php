@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 if ($user_data['password'] === $password) {
 
                     $_SESSION['user_id'] = $user_data['user_id'];
-                    header("Location: start.php");
+                    header("Location: index.html");
                     die;
                 }
             }
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <header>
         <div class="topnav">
-            <a class="active" href="#home">Home</a>
+            <a class="active" href="index.html">Home</a>
 
             <a href="#Button2">Buttontest</a>
             <div class="topnav-right">
