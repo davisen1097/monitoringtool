@@ -9,12 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	//something was posted
 	$user_name = $_POST['user_name'];
 	$password = $_POST['password'];
+	$email = $_POST['email'];
 
-	if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
+	if (!empty($user_name) && !empty($password) && !is_numeric($user_name) && !empty($email)) {
 
 		//save to database
 		$user_id = random_num(20);
-		$query = "insert into users (user_id,user_name,password) values ('$user_id','$user_name','$password')";
+		$query = "insert into users (user_id,user_name,password,users_email) values ('$user_id','$user_name','$password','$email')";
 
 		mysqli_query($con, $query);
 
@@ -119,8 +120,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		<form method="post">
 			<div style="font-size: 20px;margin: 10px;color: white;">Signup</div>
 
-			<input id="text" type="text" name="user_name"><br><br>
-			<input id="text" type="password" name="password"><br><br>
+			<input id="text" type="text" name="user_name" placeholder="Enter Username"><br><br>
+			<input id="text" type="password" name="password" placeholder="Enter Password"><br><br>
+			<input id="text" type="text" name="email" placeholder="Enter Email"><br><br>
 
 			<input id="button" type="submit" value="Signup"><br><br>
 

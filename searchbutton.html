@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="main.css" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+   
+<br /><br /><br />
+
+    <div class="input-group">
+        <input type="search" id="searchbar" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+        <button type="button" id="searchbtn" class="btn btn-outline-primary">search</button>
+    </div>
+            
+<br /><br />
+
+<script src="./jquery/\jquery.min.js"></script>
+<script src="./jquery/jquery-migrate.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $( "#searchbtn" ).click(function() {
+            var urlToPing = $("#searchbar").val()
+            ping(urlToPing)
+            // alert( $("#searchbar").val() );
+          });
+    });
+    
+    
+    
+    function ping(urlToPing) {
+        var xmlhttp = new XMLHttpRequest();
+    
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == XMLHttpRequest.DONE) { // XMLHttpRequest.DONE == 4
+               if (xmlhttp.status == 200) {
+                   alert(xmlhttp.responseText)
+               }
+    
+    
+    
+               else if (xmlhttp.status == 400) {
+                  alert('There was an error 400');
+               }
+               else {
+                   alert('something else other than 200 was returned');
+               }
+    
+    
+            }
+        };
+    
+        xmlhttp.open("GET", "ping.php?utlToPing="+urlToPing, true);
+        xmlhttp.send();
+    }
+</script>
