@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 			background-color: grey;
 			margin: auto;
-			width: auto;
+			width: 50%;
             height:auto;
 			padding: 20px;
             margin-top: -100px;
@@ -83,40 +83,30 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		</form>
 	</div>
 
-    <div id=list></div>
+    <div>
 
+    <section id="monitorsList"> </section>
+
+
+
+
+    </div>
     <script src="./jquery/\jquery.min.js"></script>
     <script src="./jquery/jquery-migrate.min.js"></script>
     <script>
         $(document).ready(function() {
-            loadXMLDoc();
+            getMonitors();
         });
-
-
-        function loadXMLDoc() {
-            var xmlhttp = new XMLHttpRequest();
-
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == XMLHttpRequest.DONE) { // XMLHttpRequest.DONE == 4
-                if (xmlhttp.status == 200) {
-                    console.log(xmlhttp.responseText)
-                    //res = JSON.parse(`${xmlhttp.responseText}`)
-                    //console.log(res)
-                }
-                else if (xmlhttp.status == 400) {
-                    alert('There was an error 400');
-                }
-                else {
-                    alert('something else other than 200 was returned');
-                }
-                }
-            };
-
-            xmlhttp.open("GET", "getmonitors.php", true);
-            xmlhttp.send();
+        function getMonitors(){
+            document.getElementById("monitorsList").innerHTML='<object type="text/html" style="width: 100%; height:100%" data="monitorslistview.html" ></object>';
         }
 
     </script>
+
+
+    <div id=list></div>
+
+    
 </body>
 
 </html>

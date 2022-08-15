@@ -17,7 +17,7 @@ function loadXMLDoc() {
                 $("#greeting").html(`Welcome back ${res.userdata.user_name}!`)
                 $("#loginbutton").hide();
                 $("#signupbutton").hide();
-                document.getElementById("section1").innerHTML='<object type="text/html" style="height: 100%" data="addmonitors.php" ></object>';
+                document.getElementById("section1").innerHTML='<object type="text/html" style="width: 100%; height:100%" data="addmonitors.php" ></object>';
 
                 // $("#section1").load("add_monitors.html")
             }
