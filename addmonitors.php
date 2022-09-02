@@ -83,14 +83,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		</form>
 	</div>
 
-    <div>
-
-    <section id="monitorsList"> </section>
+    <section id="monitorsList" style="height: 500px"> </section>
 
 
 
-
-    </div>
     <script src="./jquery/\jquery.min.js"></script>
     <script src="./jquery/jquery-migrate.min.js"></script>
     <script>
