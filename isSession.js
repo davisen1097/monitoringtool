@@ -23,11 +23,8 @@ function loadXMLDoc() {
             }
             else{
 
-                document.getElementById("section1").innerHTML='<object type="text/html" style="height: 100%" data="addmonitors.php" ></object>';
-
                 $("#section1").html(` '<object type="text/html" style="height: 100%" data="searchbutton.html" ></object>'`)
-                $("#logoutbutton").hide();
-                 
+                $("#logoutbutton").hide();   
 
             }
 

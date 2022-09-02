@@ -14,9 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	if (!empty($user_name) && !empty($password) && !is_numeric($user_name) && !empty($email)) {
 
 		//save to database
-		$user_id = random_num(20);
 		$passwordmd5 = md5($password); // password encryption
-		$query = "insert into users (user_id,user_name,password,users_email) values ('$user_id','$user_name','$passwordmd5','$email')";
+		$query = "insert into users (user_name,password,user_email) values ('$user_name','$passwordmd5','$email')";
 
 		mysqli_query($con, $query);
 

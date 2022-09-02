@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 
 <body id="monitorlistview">
-    i am in monitorlistview.html
     <style type="text/css">
-		#text {
-
-			height: 25px;
-			border-radius: 5px;
-			padding: 4px;
-			border: solid thin #aaa;
-			width: 100%;
-		}
-
-		#button {
-
-			padding: 10px;
-			width: 100px;
-			color: rgb(255, 255, 255);
-			background-color: lightblue;
-			border: none;
-		}
-
 		.monitorBox {
 
 			background-color: grey;
@@ -32,41 +13,12 @@
 		}
 	</style>
 
+    <div id="monitorviews"></div>
+
     <script src="./jquery/\jquery.min.js"></script>
     <script src="./jquery/jquery-migrate.min.js"></script>
     <script>
         
-        $(document).ready(function() {
-            getMonitors();
-        });
-
-        function loadXMLDoc() {
-            var xmlhttp = new XMLHttpRequest();
-
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == XMLHttpRequest.DONE) { // XMLHttpRequest.DONE == 4
-                if (xmlhttp.status == 200) {
-                    console.log(xmlhttp.responseText)
-                    var object=xmlhttp.responseText   
-                        
-
-                    
-
-                    //res = JSON.parse(`${xmlhttp.responseText}`)
-                    //console.log(res)
-                }
-                else if (xmlhttp.status == 400) {
-                    alert('There was an error 400');
-                }
-                else {
-                    alert('something else other than 200 was returned');
-                }
-                }
-            };
-
-            xmlhttp.open("GET", "getmonitors.php", true);
-            xmlhttp.send();
-        }
 
     </script>
 
