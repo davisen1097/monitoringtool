@@ -1,8 +1,8 @@
 <?php
 
 $dbhost = "localhost";
-$dbuser = "fend_user";
-$dbpass = "1234";
+$dbuser = "root";
+$dbpass = "";
 $dbname = "testdb";
 
 if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
