@@ -9,7 +9,7 @@ include("functions.php");
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //something was posted
     $user_name = $_POST['user_name'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']) ;
 
     if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 if ($user_data['password'] === $password) {
 
-                    $_SESSION['user_id'] = $user_data['user_id'];
+                    $_SESSION['user_id'] = $user_data['id'];
                     header("Location: index.html");
                     die;
                 }
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <header>
         <div class="topnav">
-            <a class="active" href="#home">Home</a>
+            <a class="active" href="index.html">Home</a>
 
             <a href="#Button2">Buttontest</a>
             <div class="topnav-right">

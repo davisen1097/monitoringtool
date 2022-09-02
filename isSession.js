@@ -9,19 +9,25 @@ function loadXMLDoc() {
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) { // XMLHttpRequest.DONE == 4
            if (xmlhttp.status == 200) {
-            console.log(xmlhttp.responseText)
             res = JSON.parse(`${xmlhttp.responseText}`)
+            console.log(res)
 
             if(res.islogged)
             {
-                $("#ajaxresponse").html(`I am logged in`);
+                $("#greeting").html(`Welcome back ${res.userdata.user_name}!`)
                 $("#loginbutton").hide();
                 $("#signupbutton").hide();
+                document.getElementById("section1").innerHTML='<object type="text/html" style="width: 100%; height:100%" data="addmonitors.php" ></object>';
 
+                // $("#section1").load("add_monitors.html")
             }
             else{
-                $("#ajaxresponse").html(`I am logged out`);
+
+                document.getElementById("section1").innerHTML='<object type="text/html" style="height: 100%" data="addmonitors.php" ></object>';
+
+                $("#section1").html(` '<object type="text/html" style="height: 100%" data="searchbutton.html" ></object>'`)
                 $("#logoutbutton").hide();
+                 
 
             }
 
