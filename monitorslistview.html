@@ -1,60 +1,142 @@
 <!DOCTYPE html>
 
 <body id="monitorlistview">
-    <style type="text/css">
-		.monitorBox {
 
-			background-color: grey;
-			margin: auto;
-			width: 50%;
-            height:auto;
-			padding: 20px;
-            margin-top: -100px;
-		}
-	</style>
+  <style type="text/css">
+    .monitorBox {
+      background-color: grey;
+      margin: auto;
+      width: 50%;
+      height: auto;
+      padding: 20px;
+      margin-top: -100px;
+    }
 
-    <div id="monitorviews"></div>
+ 
+    #monitorviews
+    {
+        margin-top: 7em;
+    }
 
-    <script src="./jquery/\jquery.min.js"></script>
-    <script src="./jquery/jquery-migrate.min.js"></script>
-    <script>
-        
-        $(document).ready(function() {
-            loadXMLDoc();
+
+    #searchbox{
+        position: fixed;
+        top: 0;
+        background-color: rgb(92, 71, 71);
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 2em;
+    }
+
+    #textboxmonitorname {
+
+        border-style: solid;
+        border-color: rgb(5, 0, 0);
+        border-radius: 0.5em;
+        padding: 1em;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+
+
+
+
+    }
+
+
+
+  </style>
+
+  <div id="searchbox" ></div>
+
+  <div id="monitorviews"></div>
+
+  <script src="./jquery/\jquery.min.js"></script>
+  <script src="./jquery/jquery-migrate.min.js"></script>
+  <script>
+    var usersMonitors;
+
+    $(document).ready(function () {
+      loadXMLDoc();
+    });
+
+    function loadXMLDoc() {
+      var xmlhttp = new XMLHttpRequest();
+
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+          if (xmlhttp.status == 200) {
+            var object = xmlhttp.responseText;
+            usersMonitors = JSON.parse(`${xmlhttp.responseText}`);
+
+            usersMonitors.monitors.forEach(function (monitor) {
+              var content = document.getElementById("monitorviews").innerHTML;
+              var url = `monitorView.php?name=${monitor.monitors_name}&url=${monitor.monitors_url}`;
+              document.getElementById(
+                "monitorviews"
+              ).innerHTML += `<object type="text/html" style="width: 100%; height:100%" data="${url}" ></object>`;
+            });
+
+            loadSearchBox(usersMonitors.monitors);
+          } else if (xmlhttp.status == 400) {
+            alert("There was an error 400");
+          } else {
+            alert("something else other than 200 was returned");
+          }
+        }
+      };
+
+      xmlhttp.open("GET", "getmonitors.php", true);
+      xmlhttp.send();
+    }
+
+    function loadSearchBox(monitors) {
+      var monitorsValue = monitors;
+      console.log(monitorsValue);
+
+      document.getElementById(
+        "searchbox"
+      ).innerHTML = `<input type="text" id = "textboxmonitorname" placeholder = "Filter Monitor by Name"></input>`;
+
+      document
+        .getElementById("searchbox")
+        .addEventListener("keyup", function (event) {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+            filter(event.target.value);
+          }
         });
 
-        function loadXMLDoc() {
-            var xmlhttp = new XMLHttpRequest();
+      function filter(name) {
+        var found = false;
 
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == XMLHttpRequest.DONE) { // XMLHttpRequest.DONE == 4
-                if (xmlhttp.status == 200) {
-                    var object=xmlhttp.responseText   
-                    res = JSON.parse(`${xmlhttp.responseText}`)
-                    console.log(res)
-
-                    res.monitors.forEach(function(monitor){
-                        var content = document.getElementById("monitorviews").innerHTML 
-                        var url = `monitorView.php?name=${monitor.monitors_name}&url=${monitor.monitors_url}`
-                        document.getElementById("monitorviews").innerHTML += `<object type="text/html" style="width: 100%; height:100%" data="${url}" ></object>`;
-                    })
-
-
-
-                }
-                else if (xmlhttp.status == 400) {
-                    alert('There was an error 400');
-                }
-                else {
-                    alert('something else other than 200 was returned');
-                }
-                }
-            };
-
-            xmlhttp.open("GET", "getmonitors.php", true);
-            xmlhttp.send();
+        if (name.trim() != "" && name != null) {
+          monitorsValue.forEach((element) => {
+            if (element.monitors_name == name) {
+              found = true;
+              document.getElementById("monitorviews").innerHTML = "";
+              var url = `monitorView.php?name=${element.monitors_name}&url=${element.monitors_url}`;
+              document.getElementById(
+                "monitorviews"
+              ).innerHTML += `<object type="text/html" style="width: 100%; height:100%" data="${url}" ></object>`;
+            }
+          });
+          if (!found) {
+            document.getElementById("monitorviews").innerHTML =
+              "No monitor found with this name";
+          }
         }
+        else{
+            monitorsValue.forEach((monitor) => {
+              var url = `monitorView.php?name=${monitor.monitors_name}&url=${monitor.monitors_url}`;
+              document.getElementById(
+                "monitorviews"
+              ).innerHTML += `<object type="text/html" style="width: 100%; height:100%" data="${url}" ></object>`;
+            });
 
-    </script>
-
+        }
+      }
+    }
+  </script>
 </body>

@@ -33,9 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <!DOCTYPE html>
 <html>
 
-<head>
-	<title>Signup</title>
-</head>
 
 <body>
 
@@ -67,6 +64,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			padding: 20px;
             margin-top: -100px;
 		}
+		.center{
+    		margin-top: 2em;
+			width: 30em;
+			margin: auto;
+        	padding: 20px;
+		}
 	</style>
 
 	<br /><br /><br /><br /><br /><br />
@@ -83,7 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		</form>
 	</div>
 
-    <section id="monitorsList" style="height: 500px"> </section>
+    <section  class="center" id="monitorsList" style="height: 500px"> 
+		<label>Current Monitors</label>
+	</section>
 
 
 
@@ -94,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             getMonitors();
         });
         function getMonitors(){
-            document.getElementById("monitorsList").innerHTML='<object type="text/html" style="width: 100%; height:100%" data="monitorslistview.html" ></object>';
+            document.getElementById("monitorsList").innerHTML+='<object type="text/html" style="width: 100%; height:100%" data="monitorslistview.html" ></object>';
         }
 
     </script>

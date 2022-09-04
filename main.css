@@ -27,3 +27,10 @@
     padding-top: 0.3cm;
     padding-right:0.5cm;
   }
+
+  #section1 {
+    margin-left: auto;
+    margin-right: auto;
+    width:1000px; 
+    height: 52em;
+  }
