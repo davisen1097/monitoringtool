@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			header("Refresh:0");
 			die;
 		} else {
-			echo "values are empty";
+			echo "Please input a unique Monitor";
 		}
 	}
 }
