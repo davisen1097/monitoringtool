@@ -4,12 +4,12 @@ $(document).ready(function() {
 
 
 function loadXMLDoc() {
-    var xmlhttp = new XMLHttpRequest();
+    var ajaxRequest = new XMLHttpRequest();
 
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == XMLHttpRequest.DONE) { // XMLHttpRequest.DONE == 4
-           if (xmlhttp.status == 200) {
-            res = JSON.parse(`${xmlhttp.responseText}`)
+    ajaxRequest.onreadystatechange = function() {
+        if (ajaxRequest.readyState == XMLHttpRequest.DONE) { // ajaxRequestRequest.DONE == 4
+           if (ajaxRequest.status == 200) {
+            res = JSON.parse(`${ajaxRequest.responseText}`)
             console.log(res)
 
             if(res.islogged)
@@ -29,7 +29,7 @@ function loadXMLDoc() {
             }
 
            }
-           else if (xmlhttp.status == 400) {
+           else if (ajaxRequest.status == 400) {
               alert('There was an error 400');
            }
            else {
@@ -38,7 +38,7 @@ function loadXMLDoc() {
         }
     };
 
-    xmlhttp.open("GET", "checkSession.php", true);
-    xmlhttp.send();
+    ajaxRequest.open("GET", "checkSession.php", true);
+    ajaxRequest.send();
 }
                
