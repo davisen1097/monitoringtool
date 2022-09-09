@@ -43,9 +43,16 @@
         <div id="box">
             <label id="name"><?php echo $name ?> </label>
             <label id="url"><?php echo $url ?> </label>
-            <button onclick="dosomething()">Ping</button>
+            <button onclick="ping()">Ping</button>
 
         </div>
     </body>
+
+    <scrip>
+        function ping()
+        {
+            alert("ping works")
+        }
+    </scrip>
 
 </html>
