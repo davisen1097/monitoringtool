@@ -72,7 +72,7 @@
                         if (xmlhttp.status == 200) {
                             console.log(xmlhttp.responseText)
                             var matches = xmlhttp.responseText.match(/\[(.*?)\]/g); 
-                            var content = "could no retieve ping information"
+                            var content = "could no retrieve ping information"
 
                             if (matches) {
                                 content="";

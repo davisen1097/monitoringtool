@@ -122,20 +122,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 			<input id="username" type="text" name="user_name" placeholder="Enter Username" onfocusout="myFunction()" ><br><br>
 			<input id="text" type="password" name="password" placeholder="Enter Password"><br><br>
-			<input id="text" type="text" name="email" placeholder="Enter Email"><br><br>
+			<input id="email" type="text" name="email" placeholder="Enter Email" onfocusout="myFunctionemail()" ><br><br> 
 
 			<input id="button" type="submit" value="Signup"><br><br>
 
 			<a href="login.php">Click to Login</a><br><br>
-
-			
-			<script>
-
+		</form>
+	</div>
+	<script>
 		function myFunction() {
 			var x = document.getElementById("username");
 			checkDuplicate(x)
 		}
-
 
 
 		function checkDuplicate(username) {
@@ -162,15 +160,61 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			xmlhttp.open("GET", `checkusername.php?username=${username.value}`, true);
 			xmlhttp.send();
 		}
+	</script>
 
 
 
 
+	<script>
 
-		</script>
 
-		</form>
-	</div>
+		function myFunctionemail() {
+			var regex = /[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}/i
+			var x = document.getElementById("email");
+			if(regex.test(x.value))  {
+				checkmailvalidation(x);
+				return;
+			}
+			if(x.value != "") {
+				x.value ="";
+				alert("Email format not valid");
+			}
+		}
+
+
+			function checkmailvalidation(email) {
+				var xmlhttp = new XMLHttpRequest();
+
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == XMLHttpRequest.DONE) { // XMLHttpRequest.DONE == 4
+						if (xmlhttp.status == 200) {
+							console.log(xmlhttp.responseText)
+							res = JSON.parse(`${xmlhttp.responseText}`)
+							if(res.message != "")
+							{
+								email.value = "";
+								alert(res.message);
+							}
+						} else if (xmlhttp.status == 400) {
+							alert('There was an error 400');
+						} else {
+							alert('something else other than 200 was returned');
+						}
+					}
+				};
+
+				xmlhttp.open("GET", `emailvalidation.php?email=${email.value}`, true);
+				xmlhttp.send();
+			}
+
+
+
+
+	</script>
+
+
+
+
 </body>
 
 </html>
