@@ -83,9 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<input id="button" type="submit" value="add monitor"><br><br>
 		</form>
 	</div>
-
-	<section class="center" id="monitorsList" style="height: 500px">
-		<label>Current Monitors</label>
+	<label>Current Monitors</label>
+	<section class="center" id="monitorsList" style="width: 90%;height: 500px">
 	</section>
 
 
@@ -98,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		});
 
 		function getMonitors() {
-			document.getElementById("monitorsList").innerHTML += '<object type="text/html" style="width: 100%; height:100%" data="monitorslistview.html" ></object>';
+			document.getElementById("monitorsList").innerHTML += '<object type="text/html" style="width: 85%; height:100%" data="monitorslistview.html" ></object>';
 		}
 
 		function myFunction() {
