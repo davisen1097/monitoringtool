@@ -40,8 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
 
 	<style type="text/css">
-		#input {
-
+		input:not([type='submit']) {
 			height: 25px;
 			border-radius: 5px;
 			padding: 4px;
