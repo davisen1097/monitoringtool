@@ -1,5 +1,5 @@
 <?php
-
+require 'checkuniquemail.php';
 $email = $_GET['email'];
 $myObj =  new \stdClass();
 $message = "";
@@ -9,6 +9,19 @@ $message = "";
 //     $message = "invalid format";
     
 // }
+
+if(isunique($email)->message != "" ){
+
+$message = "Email already exist" ; 
+
+$myObj->message = $message;
+
+
+$myJSON = json_encode($myObj);
+
+exit( $myJSON);
+
+}
 
 $api_key = "86139ef78d6f409d91b6200b640872ac";  //api key
 
