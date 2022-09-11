@@ -17,10 +17,7 @@ include("connection.php");
             if ($result && mysqli_num_rows($result) > 0) {
                 $message = "User name already taken";
             }
-        } else {
-            $message = "username is empty";
-        }
-
+        } 
     $myObj->message = $message;
 
 

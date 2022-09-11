@@ -191,10 +191,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						if (xmlhttp.status == 200) {
 							console.log(xmlhttp.responseText)
 							res = JSON.parse(`${xmlhttp.responseText}`)
-							if(res.message != "")
+							if(res.emailresult != "")
 							{
 								email.value = "";
-								alert(res.message);
+								alert(res.emailresult);
 							}
 						} else if (xmlhttp.status == 400) {
 							alert('There was an error 400');

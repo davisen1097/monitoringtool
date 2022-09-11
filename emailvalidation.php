@@ -12,14 +12,14 @@ $message = "";
 
 if(isunique($email)->message != "" ){
 
-$message = "Email already exist" ; 
+    $message = "Email already exist" ; 
 
-$myObj->message = $message;
+    $myObj->emailresult = $message;
 
 
-$myJSON = json_encode($myObj);
+    $myJSON = json_encode($myObj);
 
-exit( $myJSON);
+    exit( $myJSON);
 
 }
 
@@ -51,7 +51,7 @@ if ($data["is_disposable_email"]["value"] === true) {
     
 }
 
-$myObj->message = $message;
+$myObj->emailresult = $message;
 
 
 $myJSON = json_encode($myObj);
