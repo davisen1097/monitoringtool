@@ -33,3 +33,12 @@ function ping(urlToPing) {
     xmlhttp.open("GET", "ping.php?utlToPing="+urlToPing, true);
     xmlhttp.send();
 }
+
+
+function getLogin()
+{
+    document.getElementById("section1").innerHTML = ` 
+    '<object type="text/html" style="height: 100%" data="login.html" ></object>'
+    `
+
+}

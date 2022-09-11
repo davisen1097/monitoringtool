@@ -27,10 +27,8 @@
                     $user_data = mysqli_fetch_assoc($result);
                     if ($user_data['password'] === $password) {
 
-                        generate2FA($user_data['id']);
-                        $message="user authenticated";
-                        // header("Location: index.html");
-                        // die;
+                        generate2FA($user_data['id'], $user_data['user_email']);
+                        $message="2FA_req";
                     }
 
                 } else{ $message="wrong username or password!";}

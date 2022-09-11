@@ -10,5 +10,3 @@
     }
     return $randomString;
 }
-
-echo generateRandomString();

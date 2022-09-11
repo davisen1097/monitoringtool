@@ -67,22 +67,6 @@
         }
     </style>
 
-    <header>
-        <div class="topnav">
-            <a class="active" href="index.html">Home</a>
-
-            <a href="#Button2">Buttontest</a>
-            <div class="topnav-right">
-
-                &nbsp&nbsp&nbsp;
-
-                <button onclick="window.location.href='signup.php'">Signup</button>
-            </div>
-        </div>
-    </header>
-
-    <br /><br /><br /><br />
-
     <div id="box">
         <div style="font-size: 20px;margin: 10px;color: white;">Login</div>
 
@@ -95,28 +79,34 @@
     </div>
     
 <script>
+    function loginfuction() {
+        var uname = document.getElementById("username").value;
+        var pword = document.getElementById("pword").value;
 
-function loginfuction() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var res = JSON.parse(`${xhttp.responseText}`)
+            console.log(res.message)
 
-    // alert ("Please enter authentication code");
-    var uname = document.getElementById("username").value;
-    var pword = document.getElementById("pword").value;
+            if(res.authmessage == "2FA_req")
+            {
+                document.getElementById("box").innerHTML = (`
+                <object type="text/html" style="height: 100%" data="2FA.html" ></object>
+                `)
 
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        // Response
-        var response = this.responseText;
+            }
+            else{
+                "result is not true"
+            }
+        }
+        };
+        var data = `user_name=${uname}&password=${pword}`
+        xhttp.open("POST", "login.php", true); 
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send(data);
+
     }
-    };
-    var data = `user_name=${uname}&password=${pword}`
-    xhttp.open("POST", "login.php", true); 
-    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhttp.send(data);
-
-}
-
-
 </script>
 
 

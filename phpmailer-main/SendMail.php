@@ -1,12 +1,11 @@
 <?php
 
+    function sendmail($userEmail, $twoFAcode){
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    function sendmail(){
         $name = "Davisen Website Monitoring Tool";  // Name of your website or yours
-        $to = "sunjiveemooken201904269@gmail.com";  // mail of reciever
+        $to = $userEmail;  // mail of reciever
         $subject = "Test subject authentication";
-        $body = "Your authentication code will be here xxx";
+        $body = "Your authentication code is $twoFAcode";
         $from = "benmooken@gmail.com";  // you mail
         $password = "bfaopheaauyczsla";  // your mail password
 
@@ -15,7 +14,7 @@
         require_once "PHPMailer/PHPMailer.php";
         require_once "PHPMailer/SMTP.php";
         require_once "PHPMailer/Exception.php";
-        $mail = new PHPMailer();
+        $mail = new PHPMailer\PHPMailer\PHPMailer();
 
         // To Here
 
@@ -43,28 +42,9 @@
         $mail->Subject = ("$subject");
         $mail->Body = $body;
         if ($mail->send()) {
-            echo "Email is sent!";
+            return "Email is sent!";
         } else {
-            echo "Something is wrong: <br><br>" . $mail->ErrorInfo;
+            return "Something is wrong: <br><br>" . $mail->ErrorInfo;
         }
     }
-
-
-        // sendmail();  // call this function when you want to
-
-        if (isset($_GET['sendmail'])) {
-            sendmail();
-        }
 ?>
-
-
-<html>
-    <head>
-        <title>Send Mail</title>
-    </head>
-    <body>
-        <form method="get">
-            <button type="submit" name="sendmail">sendmail</button>
-        </form>
-    </body>
-</html>
