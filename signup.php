@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
 
 	<style type="text/css">
-		#text {
+		#input {
 
 			height: 25px;
 			border-radius: 5px;
@@ -120,9 +120,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		<form method="post">
 			<div style="font-size: 20px;margin: 10px;color: white;">Signup</div>
 
+			<input id="email" type="text" name="email" placeholder="Enter Email" onfocusout="myFunctionemail()" ><br><br> 
 			<input id="username" type="text" name="user_name" placeholder="Enter Username" onfocusout="myFunction()" ><br><br>
 			<input id="text" type="password" name="password" placeholder="Enter Password"><br><br>
-			<input id="email" type="text" name="email" placeholder="Enter Email" onfocusout="myFunctionemail()" ><br><br> 
+			
 
 			<input id="button" type="submit" value="Signup"><br><br>
 
