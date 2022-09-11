@@ -40,22 +40,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
 
 	<style type="text/css">
-		#input {
-
+		input:not([type='submit']) {
 			height: 25px;
 			border-radius: 5px;
 			padding: 4px;
 			border: solid thin #aaa;
 			width: 100%;
 		}
+		button:disabled,
+		button[disabled]{
+			border: 1px solid #999999;
+			background-color: #cccccc;
+			color: #666666;
+		}
 
-		#button {
+		
 
-			padding: 10px;
-			width: 100px;
-			color: white;
-			background-color: lightblue;
-			border: none;
+		button {
+			border: 1px solid #0066cc;
+			background-color: #0099cc;
+			color: #ffffff;
+			padding: 5px 10px;
 		}
 
 		#box {
@@ -122,10 +127,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 			<input id="email" type="text" name="email" placeholder="Enter Email" onfocusout="myFunctionemail()" ><br><br> 
 			<input id="username" type="text" name="user_name" placeholder="Enter Username" onfocusout="myFunction()" ><br><br>
-			<input id="text" type="password" name="password" placeholder="Enter Password"><br><br>
+			<input id="pword" type="password" name="password" placeholder="Enter Password" onfocusout="myFunction()"><br><br>
 			
 
-			<input id="button" type="submit" value="Signup"><br><br>
+			<input id="button" type="submit" value="Signup" /disabled><br><br>
 
 			<a href="login.php">Click to Login</a><br><br>
 		</form>
@@ -150,6 +155,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 							username.value = "";
 							alert(res.message);
 						}
+							else{
+								enableSubmit()
+							}
 					} else if (xmlhttp.status == 400) {
 						alert('There was an error 400');
 					} else {
@@ -196,6 +204,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 								email.value = "";
 								alert(res.emailresult);
 							}
+							else{
+								enableSubmit()
+							}
 						} else if (xmlhttp.status == 400) {
 							alert('There was an error 400');
 						} else {
@@ -208,7 +219,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				xmlhttp.send();
 			}
 
-
+			function enableSubmit()
+			{
+				document.getElementById("button").disabled=true;
+				if(document.getElementById("email").value.trim() != ""){
+					if(document.getElementById("username").value.trim() != ""){
+						if(document.getElementById("pword").value.trim() !="")
+						{
+							document.getElementById("button").disabled=false;
+						}
+					}
+				}
+			}
 
 
 	</script>
