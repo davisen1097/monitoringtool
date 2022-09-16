@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2022 at 04:37 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Generation Time: Sep 16, 2022 at 08:06 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,9 +30,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `mailcode` (
   `id` int(11) NOT NULL,
   `users_id` bigint(20) NOT NULL,
-  `mailcode_code` char(6) NOT NULL,
+  `mailcode_code` char(8) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mailcode`
+--
+
+INSERT INTO `mailcode` (`id`, `users_id`, `mailcode_code`, `date`) VALUES
+(8, 22, '8EZPOR1B', '0000-00-00'),
+(9, 23, 'BPXYXDPY', '0000-00-00'),
+(10, 23, 'HN4TGF39', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -48,6 +56,16 @@ CREATE TABLE `monitors` (
   `monitors_url` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `monitors`
+--
+
+INSERT INTO `monitors` (`id`, `users_id`, `monitors_name`, `monitors_url`) VALUES
+(4, 23, 'test1', 'facebook.com'),
+(5, 23, 'test2', 'youtube.com'),
+(6, 23, 'test3', 'https://meccabingo.com'),
+(7, 23, 'test4', 'www.spinandwin.com');
+
 -- --------------------------------------------------------
 
 --
@@ -58,7 +76,7 @@ CREATE TABLE `users` (
   `id` bigint(20) NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `user_email` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -67,7 +85,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `password`, `date`, `user_email`) VALUES
-(21, 'laurent', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-11 13:20:40', 'spiritoffirex@gmail.com');
+(21, 'laurent', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-11 13:20:40', 'spiritoffirex@gmail.com'),
+(22, 'davisen', '7cdb05f4ac1c4289c19703fe9fab3dff', '2022-09-12 18:04:49', 'sunjiveemooken201904269@gmail.com'),
+(23, 'toto', '10cbf38e11e0c990457c93b9beeed2fc', '2022-09-12 18:25:45', 'mookensooryaven@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -103,19 +123,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `mailcode`
 --
 ALTER TABLE `mailcode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `monitors`
 --
 ALTER TABLE `monitors`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
