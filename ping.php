@@ -1,12 +1,16 @@
 <?php
-error_reporting(E_ERROR | E_PARSE);
-session_start();
-$link = $_GET['utlToPing'];
+  include("polyfill.php");
+  include("connection.php");
 
-$tested = "tested ";
-if (!str_contains($link, 'http')) { 
-  $link = completeUrl($link) ;
-}
+  error_reporting(E_ERROR | E_PARSE);
+  session_start();
+  $link = $_GET['urlToPing'];
+
+  session_start();
+
+  if (!str_contains($link, 'http')) { 
+    $link = completeUrl($link) ;
+  }
 
 
 
@@ -17,16 +21,14 @@ if (!str_contains($link, 'http')) {
     $fP = fSockOpen($domain, $port, $errno, $errstr, $timeout); 
     if (!$fP) { return "down"; } 
     $tA = microtime(true); 
-    return round((($tA - $tB) * 1000), 0)." ms"; 
+    return round((($tA - $tB) * 1000), 0); 
   }
 
   function pageloadtime($link){
       $startTime = microtime(true);
       $page_cnt = file_get_contents($link);
       $endTime = microtime(true);
-      return round((($endTime - $startTime) * 1000), 0)." ms"; 
-      return round((($endTime - $startTime) * 1000), 0)." ms"; 
-      return round((($endTime - $startTime) * 1000), 0)." ms"; 
+      return round((($endTime - $startTime) * 1000), 0);
   }
 
 
@@ -45,7 +47,19 @@ if (!str_contains($link, 'http')) {
 
     return $bestUrl;
   }
-  if($link) echo "[". $link ."] server response time [".ping($link, 80, 10)."] - Page load [". pageloadtime($link)."]";
+  if($link)
+  {
+    $ping = ping($link, 80, 10);
+    $loadtime = pageloadtime($link);
+
+    if(isset($_GET['monitor']))
+    {
+      $monitor = $_GET['monitor'];
+      $query = "INSERT INTO monitor_result (monitors_id,monitor_result_ping,monitor_result_loadtime) VALUES ($monitor,$ping,$loadtime)";
+      mysqli_query($con, $query);
+    }
+    echo "[$link] - Server response time [$ping]ms - Page load time [$loadtime]ms";
+  }
   else echo "please verify your link and try again";
 
 ?> 

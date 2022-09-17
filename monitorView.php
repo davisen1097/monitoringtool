@@ -1,8 +1,8 @@
 <?php
     include("connection.php");
-
     $name = $_GET['name'];
     $url = $_GET['url'];
+    $id = $_GET['id'];
 ?>
 
 
@@ -56,7 +56,7 @@
             }
         </style>
         <div id="box">
-            <label id="name"><?php echo $name ?> </label>
+            <label id="name"><?php echo $name. $id?> </label>
             <label id="url"><?php echo $url ?> </label>
             <label id="result"></label>
 
@@ -92,8 +92,15 @@
                         }
                     }
                 };
+                var ttt = `&monitor=<?php echo $id ?>`
+
+                var queryParams = `monitor=<?php echo $id ?>&urlToPing=${document.getElementById("url").innerHTML}`
+                var link = `ping.php?${queryParams}`;
+
+                console.log(link)
+
             
-                xmlhttp.open("GET", "ping.php?utlToPing="+document.getElementById("url").innerHTML, true);
+                xmlhttp.open("GET", link, true);
                 xmlhttp.send();
             }
 

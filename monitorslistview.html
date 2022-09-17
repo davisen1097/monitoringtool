@@ -72,7 +72,7 @@
 
             usersMonitors.monitors.forEach(function (monitor) {
               var content = document.getElementById("monitorviews").innerHTML;
-              var url = `monitorView.php?name=${monitor.monitors_name}&url=${monitor.monitors_url}`;
+              var url = `monitorView.php?id=${monitor.id}&name=${monitor.monitors_name}&url=${monitor.monitors_url}`;
               document.getElementById(
                 "monitorviews"
               ).innerHTML += `<object type="text/html" style="width: 100%; height:100%" data="${url}" ></object>`;

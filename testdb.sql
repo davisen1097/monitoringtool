@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2022 at 08:06 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Sep 17, 2022 at 02:56 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -41,7 +42,9 @@ CREATE TABLE `mailcode` (
 INSERT INTO `mailcode` (`id`, `users_id`, `mailcode_code`, `date`) VALUES
 (8, 22, '8EZPOR1B', '0000-00-00'),
 (9, 23, 'BPXYXDPY', '0000-00-00'),
-(10, 23, 'HN4TGF39', '0000-00-00');
+(10, 23, 'HN4TGF39', '0000-00-00'),
+(11, 22, 'BXYM44KK', '0000-00-00'),
+(12, 23, 'RO4L5895', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -69,6 +72,28 @@ INSERT INTO `monitors` (`id`, `users_id`, `monitors_name`, `monitors_url`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `monitor_result`
+--
+
+CREATE TABLE `monitor_result` (
+  `id` bigint(20) NOT NULL,
+  `monitors_id` int(20) NOT NULL,
+  `monitor_result_ping` int(8) DEFAULT NULL,
+  `monitor_result_loadtime` int(8) DEFAULT NULL,
+  `monitor_result_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `monitor_result`
+--
+
+INSERT INTO `monitor_result` (`id`, `monitors_id`, `monitor_result_ping`, `monitor_result_loadtime`, `monitor_result_date`) VALUES
+(2, 4, 60, 1351, '2022-09-17 00:54:23'),
+(3, 6, 21, 763, '2022-09-17 00:55:17');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -76,7 +101,7 @@ CREATE TABLE `users` (
   `id` bigint(20) NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_email` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -108,6 +133,13 @@ ALTER TABLE `monitors`
   ADD KEY `FK_users_id` (`users_id`);
 
 --
+-- Indexes for table `monitor_result`
+--
+ALTER TABLE `monitor_result`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_monitor_id` (`monitors_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -123,13 +155,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `mailcode`
 --
 ALTER TABLE `mailcode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `monitors`
 --
 ALTER TABLE `monitors`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `monitor_result`
+--
+ALTER TABLE `monitor_result`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -152,6 +190,12 @@ ALTER TABLE `mailcode`
 --
 ALTER TABLE `monitors`
   ADD CONSTRAINT `FK_users_id` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `monitor_result`
+--
+ALTER TABLE `monitor_result`
+  ADD CONSTRAINT `FK_monitor_id` FOREIGN KEY (`monitors_id`) REFERENCES `monitors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
