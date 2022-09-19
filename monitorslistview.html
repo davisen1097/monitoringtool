@@ -116,7 +116,7 @@
             if (element.monitors_name == name) {
               found = true;
               document.getElementById("monitorviews").innerHTML = "";
-              var url = `monitorView.php?name=${element.monitors_name}&url=${element.monitors_url}`;
+              var url = `monitorView.php?id=${monitor.id}&name=${monitor.monitors_name}&url=${monitor.monitors_url}`;
               document.getElementById(
                 "monitorviews"
               ).innerHTML += `<object type="text/html" style="width: 100%; height:100%" data="${url}" ></object>`;
@@ -130,7 +130,7 @@
         else{
             document.getElementById("monitorviews").innerHTML = "";
             monitorsValue.forEach((monitor) => {
-              var url = `monitorView.php?name=${monitor.monitors_name}&url=${monitor.monitors_url}`;
+              var url = `monitorView.php?id=${monitor.id}&name=${monitor.monitors_name}&url=${monitor.monitors_url}`;
               document.getElementById(
                 "monitorviews"
               ).innerHTML += `<object type="text/html" style="width: 100%; height:100%" data="${url}" ></object>`;
