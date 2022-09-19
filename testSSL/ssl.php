@@ -20,7 +20,7 @@ function is_ssl_exists($url)
     return false;
 }
 
-$domain = 'http://localhost:8080/dissert/monitoringtool/testSSL/ssl.php';
+$domain = 'http://www.facebook.com';
 
 if (is_ssl_exists($domain)) {
 

@@ -2,6 +2,9 @@
 session_start();
 
 include("connection.php");
+include("getDomainInfo.php");
+include("polyfill.php");
+
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -13,8 +16,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	if (isset($_SESSION['user_id'])) {
 		if (!empty($monitorName) && !empty($monitorUrl)) {
 			$userId = $_SESSION['user_id'];
+			$domain = $monitorUrl;
+			if(str_contains($domain, 'http')) $domain = preg_replace("(^https?://)", "", $monitorUrl );
+
+
 			$query = "INSERT INTO monitors (users_id,monitors_name,monitors_url) VALUES ('$userId','$monitorName','$monitorUrl') ";
 			mysqli_query($con, $query);
+
+			$query = "SELECT domain_name FROM domain_info WHERE domain_name = '$domain' limit 1";
+			$result = mysqli_query($con, $query);
+
+			if ($result && mysqli_num_rows($result) < 1){
+				$info = json_decode(getdomaininfo($domain));
+				$ip = $info->ipadd;
+				$country = $info->country;
+				$name = $info->countryName;
+				$query = "INSERT INTO domain_info (domain_name,domain_ip,domain_countryCode, domain_countryName) VALUES ('$domain','$ip','$country', '$name')";
+				mysqli_query($con, $query);
+			}
+
 			header("Refresh:0");
 			die;
 		} else {

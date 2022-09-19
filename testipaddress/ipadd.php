@@ -1,7 +1,7 @@
 <?php
 
 
-$webaddress = "www.facebook.com" ; 
+$webaddress = "callwellsl.com" ; 
 echo "<p> the website should be here: " .gethostbyname($webaddress). "</p>" ;
 
 
@@ -38,5 +38,8 @@ echo $details->city; // -> "Mountain View"
 echo"<br>";
 echo $details->country;
 
+
+$bigdata = json_decode(file_get_contents("https://api.bigdatacloud.net/data/country-by-ip?ip={$ip}&key=bdc_ec8afe1d91ad44619e317cafb23964c9"));
+echo $bigdata->country->isoName;
 ?>
 
