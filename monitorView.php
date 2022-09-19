@@ -60,7 +60,8 @@
             <label id="url"><?php echo $url ?> </label>
             <label id="result"></label>
 
-            <button onclick="ping()">Ping</button>
+            <button onclick="ping()">Ping</button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button onclick="deletemonitor()">Delete Monitor</button>
 
         </div>
         <script>
@@ -122,6 +123,22 @@
                 `
 
             }
+
+            function deletemonitor() {
+
+                    parent.parent.window.location.href = "./deletemonitorindb/delete.php?id="+<?php echo $id ?>;
+
+            }
         </script>
+
+      
+
+
+
+
+
+
+
+
     </body>
 </html>
