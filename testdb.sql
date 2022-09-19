@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2022 at 02:56 AM
+-- Generation Time: Sep 19, 2022 at 04:06 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -25,6 +25,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `domain_info`
+--
+
+CREATE TABLE `domain_info` (
+  `id` bigint(20) NOT NULL,
+  `domain_name` mediumtext NOT NULL,
+  `domain_ip` text NOT NULL,
+  `domain_countryCode` varchar(3) NOT NULL,
+  `domain_countryName` mediumtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `domain_info`
+--
+
+INSERT INTO `domain_info` (`id`, `domain_name`, `domain_ip`, `domain_countryCode`, `domain_countryName`) VALUES
+(1, 'facebook.com', '102.132.96.35', 'USA', 'the United States of America'),
+(2, 'lexpress.mu', '172.67.74.24', 'USA', 'the United States of America'),
+(3, 'govmu.org', '196.13.125.126', 'MUS', 'the Republic of Mauritius'),
+(4, 'www.spinandwin.com', '104.17.193.8', 'USA', 'the United States of America'),
+(5, 'www.facebook.com', '102.132.96.35', 'USA', 'the United States of America'),
+(6, 'meccabingo.com', '217.114.94.2', 'USA', 'the United States of America');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mailcode`
 --
 
@@ -32,19 +58,8 @@ CREATE TABLE `mailcode` (
   `id` int(11) NOT NULL,
   `users_id` bigint(20) NOT NULL,
   `mailcode_code` char(8) NOT NULL,
-  `date` date NOT NULL
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mailcode`
---
-
-INSERT INTO `mailcode` (`id`, `users_id`, `mailcode_code`, `date`) VALUES
-(8, 22, '8EZPOR1B', '0000-00-00'),
-(9, 23, 'BPXYXDPY', '0000-00-00'),
-(10, 23, 'HN4TGF39', '0000-00-00'),
-(11, 22, 'BXYM44KK', '0000-00-00'),
-(12, 23, 'RO4L5895', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -64,10 +79,10 @@ CREATE TABLE `monitors` (
 --
 
 INSERT INTO `monitors` (`id`, `users_id`, `monitors_name`, `monitors_url`) VALUES
-(4, 23, 'test1', 'facebook.com'),
-(5, 23, 'test2', 'youtube.com'),
-(6, 23, 'test3', 'https://meccabingo.com'),
-(7, 23, 'test4', 'www.spinandwin.com');
+(11, 23, 'spin and win', 'https://www.spinandwin.com'),
+(12, 23, 'Facebook', 'https://www.facebook.com'),
+(13, 23, 'gov mauritius', 'govmu.org'),
+(14, 23, 'mecca bingo', 'meccabingo.com');
 
 -- --------------------------------------------------------
 
@@ -88,8 +103,14 @@ CREATE TABLE `monitor_result` (
 --
 
 INSERT INTO `monitor_result` (`id`, `monitors_id`, `monitor_result_ping`, `monitor_result_loadtime`, `monitor_result_date`) VALUES
-(2, 4, 60, 1351, '2022-09-17 00:54:23'),
-(3, 6, 21, 763, '2022-09-17 00:55:17');
+(6, 13, 12, 2196, '2022-09-19 17:35:40'),
+(7, 12, 68, 963, '2022-09-19 17:35:49'),
+(8, 11, 81, 4279, '2022-09-19 17:35:58'),
+(9, 11, 9, 6897, '2022-09-19 17:36:05'),
+(10, 12, 42, 918, '2022-09-19 17:36:06'),
+(11, 13, 10, 2216, '2022-09-19 17:36:13'),
+(12, 12, 41, 913, '2022-09-19 17:36:17'),
+(13, 11, 7, 6666, '2022-09-19 17:36:24');
 
 -- --------------------------------------------------------
 
@@ -117,6 +138,12 @@ INSERT INTO `users` (`id`, `user_name`, `password`, `date`, `user_email`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `domain_info`
+--
+ALTER TABLE `domain_info`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `mailcode`
@@ -152,22 +179,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `domain_info`
+--
+ALTER TABLE `domain_info`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `mailcode`
 --
 ALTER TABLE `mailcode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `monitors`
 --
 ALTER TABLE `monitors`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `monitor_result`
 --
 ALTER TABLE `monitor_result`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
