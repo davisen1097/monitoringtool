@@ -56,7 +56,7 @@
             }
         </style>
         <div id="box">
-            <label id="name"><?php echo $name. $id?> </label>
+            <label id="name"><?php echo $name ?> </label>
             <label id="url"><?php echo $url ?> </label>
             <label id="result"></label>
 
@@ -93,7 +93,6 @@
                         }
                     }
                 };
-                var ttt = `&monitor=<?php echo $id ?>`
 
                 var queryParams = `monitor=<?php echo $id ?>&urlToPing=${document.getElementById("url").innerHTML}`
                 var link = `ping.php?${queryParams}`;
@@ -125,9 +124,7 @@
             }
 
             function deletemonitor() {
-
-                    parent.parent.window.location.href = "./deletemonitorindb/delete.php?id="+<?php echo $id ?>;
-
+                parent.parent.window.location.href = "./deletemonitorindb/delete.php?id="+<?php echo $id ?>;
             }
         </script>
 
