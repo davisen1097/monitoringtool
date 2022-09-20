@@ -61,7 +61,7 @@
             <label id="result"></label>
 
             <button onclick="ping()">Ping</button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <button onclick="deletemonitor()">Delete Monitor</button>
+            <button onclick="deletemonitor()">Remove</button>
 
         </div>
         <script>
@@ -69,28 +69,24 @@
                 var xmlhttp = new XMLHttpRequest();
             
                 xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == XMLHttpRequest.DONE) { // XMLHttpRequest.DONE == 4
+                    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                        var content = "could not retrieve ping information";
+
                         if (xmlhttp.status == 200) {
                             console.log(xmlhttp.responseText)
                             var matches = xmlhttp.responseText.match(/\[(.*?)\]/g); 
-                            var content = "could no retrieve ping information"
 
                             if (matches) {
                                 content="";
-                                content = `${matches[0]}
-                                ${matches[1]}
-                                ${matches[2]}`
-                        
+                                content = loadtable(matches);
+                                document.getElementById("box").style.height = "5%";
                             }
-                            document.getElementById("box").style.height = "5%";
-                            document.getElementById("result").innerHTML = loadtable(matches);
+
                         }
-                        else if (xmlhttp.status == 400) {
-                            alert('There was an error 400');
-                        }
-                        else {
-                            alert('something else other than 200 was returned');
-                        }
+                        else if (xmlhttp.status == 400) { console.error("bad request") }
+                        else { content += ` due to an error ${xmlhttp.status}`; }
+
+                        document.getElementById("result").innerHTML = content;
                     }
                 };
 
@@ -99,7 +95,6 @@
 
                 console.log(link)
 
-            
                 xmlhttp.open("GET", link, true);
                 xmlhttp.send();
             }
@@ -127,15 +122,6 @@
                 parent.parent.window.location.href = "./deletemonitorindb/delete.php?id="+<?php echo $id ?>;
             }
         </script>
-
-      
-
-
-
-
-
-
-
 
     </body>
 </html>

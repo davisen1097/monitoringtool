@@ -112,11 +112,11 @@
         var found = false;
 
         if (name.trim() != "" && name != null) {
-          monitorsValue.forEach((element) => {
-            if (element.monitors_name == name) {
+          monitorsValue.forEach((m) => {
+            if (m.monitors_name.toLowerCase() == name.toLowerCase()) {
               found = true;
               document.getElementById("monitorviews").innerHTML = "";
-              var url = `monitorView.php?id=${monitor.id}&name=${monitor.monitors_name}&url=${monitor.monitors_url}`;
+              var url = `monitorView.php?id=${m.id}&name=${m.monitors_name}&url=${m.monitors_url}`;
               document.getElementById(
                 "monitorviews"
               ).innerHTML += `<object type="text/html" style="width: 100%; height:100%" data="${url}" ></object>`;
@@ -129,8 +129,8 @@
         }
         else{
             document.getElementById("monitorviews").innerHTML = "";
-            monitorsValue.forEach((monitor) => {
-              var url = `monitorView.php?id=${monitor.id}&name=${monitor.monitors_name}&url=${monitor.monitors_url}`;
+            monitorsValue.forEach((m) => {
+              var url = `monitorView.php?id=${m.id}&name=${m.monitors_name}&url=${m.monitors_url}`;
               document.getElementById(
                 "monitorviews"
               ).innerHTML += `<object type="text/html" style="width: 100%; height:100%" data="${url}" ></object>`;
