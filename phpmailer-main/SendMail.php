@@ -4,8 +4,8 @@
 
         $name = "Davisen Website Monitoring Tool";  // Name of your website or yours
         $to = $userEmail;  // mail of reciever
-        $subject = "Test subject authentication";
-        $body = "Your authentication code is $twoFAcode";
+        $subject = "Davisen Website Monitoring Tool Authentication Code";
+        $body = "Please input the following authentication code: $twoFAcode to login successfully on website";
         $from = "benmooken@gmail.com";  // you mail
         $password = "bfaopheaauyczsla";  // your mail password
 
