@@ -1,8 +1,8 @@
 <?php
 
 
-$webaddress = "callwellsl.com" ; 
-echo "<p> the website should be here: " .gethostbyname($webaddress). "</p>" ;
+$webaddress = "facebook.com" ; 
+echo "<p> The IP address of the website is: " .gethostbyname($webaddress). "</p>" ;
 
 
 
@@ -32,14 +32,14 @@ echo "<p> the website should be here: " .gethostbyname($webaddress). "</p>" ;
 
 
 
-$ip = gethostbyname($webaddress);
-$details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
-echo $details->city; // -> "Mountain View"
-echo"<br>";
-echo $details->country;
+// $ip = gethostbyname($webaddress);
+// $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+// echo $details->city; // -> "Mountain View"
+// echo"<br>";
+// echo $details->country;
 
 
-$bigdata = json_decode(file_get_contents("https://api.bigdatacloud.net/data/country-by-ip?ip={$ip}&key=bdc_ec8afe1d91ad44619e317cafb23964c9"));
-echo $bigdata->country->isoName;
-?>
+// $bigdata = json_decode(file_get_contents("https://api.bigdatacloud.net/data/country-by-ip?ip={$ip}&key=bdc_ec8afe1d91ad44619e317cafb23964c9"));
+// echo $bigdata->country->isoName;
+// ?>
 
