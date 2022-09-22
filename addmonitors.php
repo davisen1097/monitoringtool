@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<input id="monitorname" type="text" name="name" placeholder="Enter Monitor name" onfocusout="myFunction()"><br><br>
 			<input id="text" type="text" name="url" placeholder="Enter Monitor Url"><br><br>
 
-			<input id="button" type="submit" value="add monitor"><br><br>
+			<input id="button" type="submit" value="Add monitor"><br><br>
 		</form>
 	</div>
 	
