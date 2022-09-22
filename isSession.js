@@ -24,7 +24,7 @@ function loadXMLDoc() {
             }
             else{
 
-                $("#section1").html(` '<object type="text/html" style="height: 100%" data="searchbutton.html" ></object>'`)
+                $("#section1").html(` '<object type="text/html" style="height: 100%; width: 50em" data="searchbutton.html" ></object>'`)
                 $("#logoutbutton").hide();   
 
             }
