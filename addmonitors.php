@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<input id="button" type="submit" value="add monitor"><br><br>
 		</form>
 	</div>
-	<label>Current Monitors</label>
+	
 	<section class="center" id="monitorsList" style="width: 90%;height: 500px">
 	</section>
 
