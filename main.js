@@ -38,7 +38,6 @@ function ping(urlToPing) {
 function getLogin()
 {
     document.getElementById("section1").innerHTML = ` 
-    '<object type="text/html" style="height: 100%" data="login.html" ></object>'
+    '<object type="text/html" style="height: 100%; width: 30em; overflow-x: hidden" data="login.html" ></object>'
     `
-
 }
