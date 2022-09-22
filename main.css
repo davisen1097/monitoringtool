@@ -34,3 +34,43 @@
     width:1000px; 
     height: 52em;
   }
+
+
+  #footer{
+    text-align: center;
+    text-shadow: 10px;
+    text-decoration-line: overline;
+    font-size: 40px;
+    font-style: oblique;
+    color: rgb(65, 87, 70);
+    background-color: rgb(255, 255, 255);
+}
+
+#websitetitle{
+  text-align: center;
+  text-shadow: 10px;
+  font-size: 50px;
+  font-family: "Sofia";
+  color: rgb(102, 116, 54);
+  background-color: rgb(255, 255, 255);
+}
+
+
+#greeting{
+  text-align: left;
+  text-shadow: 5px;
+  font-size: 40px;
+  font-style: italic;
+  color: rgb(102, 116, 54);
+  background-color: rgb(255, 255, 255);
+}
+
+
+#logoutstateinfo{
+  text-align: center;
+  text-shadow: 5px;
+  font-size: 30px;
+  font-style: italic;
+  color: rgb(163, 144, 34);
+  background-color: rgb(255, 255, 255);
+}
