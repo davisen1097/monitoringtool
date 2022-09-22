@@ -41,3 +41,10 @@ function getLogin()
     '<object type="text/html" style="height: 100%; width: 30em; overflow-x: hidden" data="login.html" ></object>'
     `
 }
+
+function getsignup()
+{
+    document.getElementById("section1").innerHTML = ` 
+    '<object type="text/html" style="height: 100%; width: 30em; overflow-x: hidden" data="signup.php" ></object>'
+    `
+}
