@@ -104,19 +104,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		}
 	</style>
 
-	<header>
-		<div class="topnav">
-			<a class="active" href="index.html">Home</a>
-
-			<a href="#Button2">Buttontest</a>
-			<div class="topnav-right">
-
-				&nbsp&nbsp&nbsp;
-
-				<button onclick="window.location.href='login.php'">Login</button>
-			</div>
-		</div>
-	</header>
 
 	<br /><br /><br /><br /><br /><br />
 
@@ -132,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 			<input id="button" type="submit" value="Signup" /disabled><br><br>
 
-			<a href="login.php">Click to Login</a><br><br>
+			<a href="login.html">Click to Login</a><br><br>
 		</form>
 	</div>
 	<script>
