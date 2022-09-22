@@ -23,7 +23,7 @@ if(isunique($email)->message != "" ){
 
 }
 
-$api_key = "86139ef78d6f409d91b6200b640872ac";  //api key
+$api_key = "60fe3f2c2d674d1bb0de7684cd82a1ca";  //new api key used - apitestxxx@gmail.com/Davisen1097 and this is the link to API usage - https://app.abstractapi.com/api/email-validation/usage
 
 $ch = curl_init();
 
