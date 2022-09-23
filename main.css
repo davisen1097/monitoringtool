@@ -74,3 +74,13 @@
   color: rgb(163, 144, 34);
   background-color: rgb(255, 255, 255);
 }
+
+
+#resultping{
+  text-align: center;
+  text-shadow: 5px;
+  font-size: 30px;
+  font-style: bold;
+  color: rgb(28, 27, 87);
+  background-color: rgb(255, 255, 255);
+}
