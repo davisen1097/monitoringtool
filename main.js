@@ -3,7 +3,7 @@ $(document).ready(function() {
         var urlToPing = $("#searchbar").val()
         ping(urlToPing)
         // alert( $("#searchbar").val() );
-      });
+    });
 });
 
 

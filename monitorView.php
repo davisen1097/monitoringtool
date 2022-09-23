@@ -61,7 +61,8 @@
             <label id="result"></label>
             <br> 
             <button onclick="ping()">Ping</button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <button onclick="deletemonitor()">Remove</button>
+            <button onclick="deletemonitor()">Remove</button>&nbsp&nbsp&nbsp&nbsp
+            <a href="">view metrics</a>
 
         </div>
         <script>
