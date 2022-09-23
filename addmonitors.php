@@ -28,10 +28,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 			if ($result && mysqli_num_rows($result) < 1){
 				$info = json_decode(getdomaininfo($domain));
-				$ip = $info->ipadd;
-				$country = $info->country;
-				$name = $info->countryName;
-				$query = "INSERT INTO domain_info (domain_name,domain_ip,domain_countryCode, domain_countryName) VALUES ('$domain','$ip','$country', '$name')";
+				$ip = $info->domain_ip;
+				$country = $info->domain_countryCode;
+				$name = $info->domain_countryName;
+                $localrank = $info->domain_localRank;
+                $globalrank = $info->domain_globalRank;
+                $certValidFrom = $info->domain_certValidFrom;
+                $certValidTo = $info->domain_certValidTo;
+                $certIssuer = $info->domain_certIssuer;
+				$query = "INSERT INTO domain_info (domain_name, domain_ip, domain_countryCode, domain_countryName, domain_localRank, domain_globalRank, domain_certValidFrom, domain_certValidTo, domain_certIssuer) 
+                VALUES ('$domain','$ip','$country', '$name', '$localrank', '$globalrank', '$certValidFrom', '$certValidTo', '$certIssuer' )";
 				mysqli_query($con, $query);
 			}
 
