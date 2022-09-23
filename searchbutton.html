@@ -25,6 +25,8 @@
         <input type="search" id="searchbar" class="form-control rounded" placeholder="Input any Website to view Latency and Loading Time" aria-label="Search" aria-describedby="search-addon" />
         <button type="button" id="searchbtn" class="btn btn-outline-primary">Ping</button>
     </div>
+
+    <div id = resultping></div>
             
 <br /><br />
 
@@ -47,7 +49,10 @@
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == XMLHttpRequest.DONE) { // XMLHttpRequest.DONE == 4
                if (xmlhttp.status == 200) {
-                   alert(xmlhttp.responseText)
+                var matches = xmlhttp.responseText.match(/\[(.*?)\]/g);
+                    var latency = matches[1].replace(/[\[\]']+/g,'')
+                    var loadtime = matches[2].replace(/[\[\]']+/g,'')
+                   document.getElementById("resultping").innerHTML = `<br> Latency is ${latency}ms <br> Page Load Time is ${loadtime}ms`
                }
     
     
