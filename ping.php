@@ -1,5 +1,4 @@
 <?php
-  include("polyfill.php");
   include("connection.php");
 
   error_reporting(E_ERROR | E_PARSE);
@@ -8,9 +7,8 @@
 
   session_start();
 
-  if (!str_contains($link, 'http')) { 
-    $link = completeUrl($link) ;
-  }
+  $link = completeUrl($link) ;
+
 
 
 
@@ -32,21 +30,29 @@
   }
 
 
-  function completeUrl($domainOnly)
+  function completeUrl($link)
   {
-    $scheme_list = ['https://www.','https://', 'http://www.', 'http://'];
-    $bestUrl = false;
-    foreach($scheme_list as $scheme){
+    require("polyfill.php");
 
-        $res = get_headers($scheme.$domainOnly);
-        if($res){
-             $bestUrl = $scheme.$domainOnly;
-             break;
+    $bestUrl = $link;
+    if (!str_contains($bestUrl, 'http')) 
+    { 
+      $scheme_list = ['https://www.','https://', 'http://www.', 'http://'];
+      $bestUrl = false;
+      foreach($scheme_list as $scheme){
+        $res = get_headers($scheme.$link);
+        if($res)
+        {
+          $bestUrl = $scheme.$link;
+          break;
         }
+      }
     }
 
     return $bestUrl;
   }
+
+
   if($link)
   {
     $ping = ping($link, 80, 10);
