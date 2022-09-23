@@ -29,7 +29,7 @@
 
                         generate2FA($user_data['id'], $user_data['user_email']);
                         $message="2FA_req";
-                    }
+                    } else{ $message="wrong username or password!";}
 
                 } else{ $message="wrong username or password!";}
             }
