@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2022 at 03:29 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Sep 24, 2022 at 07:22 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,27 +32,31 @@ CREATE TABLE `domain_info` (
   `id` bigint(20) NOT NULL,
   `domain_name` mediumtext NOT NULL,
   `domain_ip` text NOT NULL,
-  `domain_countryCode` varchar(3) NOT NULL,
-  `domain_countryName` mediumtext NOT NULL
+  `domain_countryCode` varchar(3) DEFAULT NULL,
+  `domain_countryName` mediumtext NOT NULL,
+  `domain_localRank` int(15) DEFAULT NULL,
+  `domain_globalRank` int(15) DEFAULT NULL,
+  `domain_certValidFrom` varchar(35) DEFAULT NULL,
+  `domain_certValidTo` varchar(35) DEFAULT NULL,
+  `domain_certIssuer` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `domain_info`
 --
 
-INSERT INTO `domain_info` (`id`, `domain_name`, `domain_ip`, `domain_countryCode`, `domain_countryName`) VALUES
-(1, 'facebook.com', '102.132.96.35', 'USA', 'the United States of America'),
-(3, 'govmu.org', '196.13.125.126', 'MUS', 'the Republic of Mauritius'),
-(5, 'www.facebook.com', '102.132.96.35', 'USA', 'the United States of America'),
-(6, 'meccabingo.com', '217.114.94.2', 'USA', 'the United States of America'),
-(8, 'youtube.com', '172.217.170.174', 'USA', 'the United States of America'),
-(9, 'meccagames.com', '172.64.144.232', 'USA', 'the United States of America'),
-(10, 'twitter.com', '104.244.42.193', 'USA', 'the United States of America'),
-(11, 'kittybingo.com', '104.17.213.85', 'USA', 'the United States of America'),
-(13, 'thevic.com', '172.64.145.144', 'USA', 'the United States of America'),
-(14, 'aspers.com', '104.18.9.171', 'USA', 'the United States of America'),
-(18, 'lexpress.mu', '104.26.0.81', 'MU', 'Mauritius'),
-(19, 'grosvenorcasinos.com', '217.114.94.2', 'GB', 'United Kingdom');
+INSERT INTO `domain_info` (`id`, `domain_name`, `domain_ip`, `domain_countryCode`, `domain_countryName`, `domain_localRank`, `domain_globalRank`, `domain_certValidFrom`, `domain_certValidTo`, `domain_certIssuer`) VALUES
+(27, 'facebook.com', '102.132.96.35', 'US', 'United States', 5, 4, 'Sun, 03 Jul 2022 02:00:00 +0200', 'Sun, 02 Oct 2022 01:59:59 +0200', 'DigiCert Inc [US]'),
+(28, 'govmu.org', '196.13.125.126', 'MU', 'Mauritius', 17, 43972, 'Wed, 20 Oct 2021 02:00:00 +0200', 'Mon, 21 Nov 2022 00:59:59 +0100', 'DigiCert Inc [US]'),
+(29, 'spotify.com', '35.186.224.25', 'US', 'United States', 52, 62, 'Wed, 06 Apr 2022 02:00:00 +0200', 'Fri, 07 Apr 2023 01:59:59 +0200', 'DigiCert Inc [US]'),
+(30, 'youtube.com', '172.217.170.174', 'US', 'United States', 2, 2, 'Mon, 05 Sep 2022 10:17:24 +0200', 'Mon, 28 Nov 2022 09:17:23 +0100', 'Google Trust Services LLC [US]'),
+(31, 'quillbot.com', '172.67.5.239', 'IN', 'India', 72, 227, 'Mon, 08 Aug 2022 02:00:00 +0200', 'Tue, 08 Aug 2023 01:59:59 +0200', 'Cloudflare, Inc. [US]'),
+(32, 'www.spinandwin.com', '104.17.192.8', '', '', 0, 1218280, 'Wed, 22 Jun 2022 02:00:00 +0200', 'Fri, 23 Jun 2023 01:59:59 +0200', 'Cloudflare, Inc. [US]'),
+(33, 'www.facebook.com', '102.132.96.35', 'US', 'United States', 5, 4, 'Sun, 03 Jul 2022 02:00:00 +0200', 'Sun, 02 Oct 2022 01:59:59 +0200', 'DigiCert Inc [US]'),
+(34, 'meccagames.com', '104.18.43.24', '', '', 0, 1758226, 'Sat, 01 Jan 2022 01:00:00 +0100', 'Mon, 02 Jan 2023 00:59:59 +0100', 'Cloudflare, Inc. [US]'),
+(35, 'kittybingo.com', '104.17.213.85', '', '', 0, 990448, 'Wed, 22 Jun 2022 02:00:00 +0200', 'Fri, 23 Jun 2023 01:59:59 +0200', 'Cloudflare, Inc. [US]'),
+(37, 'codepen.io', '104.16.176.44', 'IN', 'India', 183, 613, 'Fri, 06 May 2022 02:00:00 +0200', 'Sun, 07 May 2023 01:59:59 +0200', 'Cloudflare, Inc. [US]'),
+(38, 'github.com', '140.82.121.3', 'CN', 'China', 21, 27, 'Tue, 15 Mar 2022 01:00:00 +0100', 'Thu, 16 Mar 2023 00:59:59 +0100', 'DigiCert Inc [US]');
 
 -- --------------------------------------------------------
 
@@ -63,7 +68,7 @@ CREATE TABLE `mailcode` (
   `id` int(11) NOT NULL,
   `users_id` bigint(20) NOT NULL,
   `mailcode_code` char(8) NOT NULL,
-  `date` datetime NOT NULL DEFAULT current_timestamp()
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -82,7 +87,8 @@ INSERT INTO `mailcode` (`id`, `users_id`, `mailcode_code`, `date`) VALUES
 (64, 23, '3TNBU8MA', '2022-09-23 12:05:12'),
 (65, 23, '8ROA75T0', '2022-09-23 12:05:16'),
 (66, 23, 'H2NVP9WQ', '2022-09-23 12:07:37'),
-(67, 23, 'XF11WQI8', '2022-09-23 17:25:11');
+(67, 23, 'XF11WQI8', '2022-09-23 17:25:11'),
+(68, 23, '1O4V12N7', '2022-09-24 02:36:01');
 
 -- --------------------------------------------------------
 
@@ -102,7 +108,6 @@ CREATE TABLE `monitors` (
 --
 
 INSERT INTO `monitors` (`id`, `users_id`, `monitors_name`, `monitors_url`) VALUES
-(11, 23, 'spin and win', 'https://www.spinandwin.com'),
 (12, 23, 'Facebook', 'https://www.facebook.com'),
 (13, 23, 'gov mauritius', 'govmu.org'),
 (14, 23, 'mecca bingo', 'meccabingo.com'),
@@ -112,7 +117,8 @@ INSERT INTO `monitors` (`id`, `users_id`, `monitors_name`, `monitors_url`) VALUE
 (21, 22, 'test5', 'facebook.com'),
 (22, 22, 'test6', 'lexpress.mu'),
 (25, 23, 'test7', 'kittybingo.com'),
-(35, 21, 'lautest', 'grosvenorcasinos.com');
+(35, 21, 'lautest', 'grosvenorcasinos.com'),
+(40, 23, 'Github', 'github.com');
 
 -- --------------------------------------------------------
 
@@ -125,7 +131,7 @@ CREATE TABLE `monitor_result` (
   `monitors_id` int(20) NOT NULL,
   `monitor_result_ping` int(8) DEFAULT NULL,
   `monitor_result_loadtime` int(8) DEFAULT NULL,
-  `monitor_result_date` datetime NOT NULL DEFAULT current_timestamp()
+  `monitor_result_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -135,21 +141,14 @@ CREATE TABLE `monitor_result` (
 INSERT INTO `monitor_result` (`id`, `monitors_id`, `monitor_result_ping`, `monitor_result_loadtime`, `monitor_result_date`) VALUES
 (6, 13, 12, 2196, '2022-09-19 17:35:40'),
 (7, 12, 68, 963, '2022-09-19 17:35:49'),
-(8, 11, 81, 4279, '2022-09-19 17:35:58'),
-(9, 11, 9, 6897, '2022-09-19 17:36:05'),
 (10, 12, 42, 918, '2022-09-19 17:36:06'),
 (11, 13, 10, 2216, '2022-09-19 17:36:13'),
 (12, 12, 41, 913, '2022-09-19 17:36:17'),
-(13, 11, 7, 6666, '2022-09-19 17:36:24'),
-(14, 11, 55, 8686, '2022-09-19 18:17:28'),
-(15, 11, 23, 4177, '2022-09-19 18:17:32'),
-(17, 11, 173, 4668, '2022-09-19 19:52:13'),
 (22, 18, 15, 4913, '2022-09-19 20:28:13'),
 (26, 18, 24, 5887, '2022-09-19 20:29:06'),
 (27, 13, 13, 666, '2022-09-19 20:29:34'),
 (28, 13, 9, 1742, '2022-09-19 20:31:51'),
 (29, 13, 10, 2123, '2022-09-19 20:33:03'),
-(30, 11, 21, 4845, '2022-09-20 19:03:51'),
 (31, 14, 7, 382, '2022-09-20 19:04:19'),
 (32, 13, 13, 417, '2022-09-20 19:04:23'),
 (33, 20, 31, 5040, '2022-09-20 19:07:11'),
@@ -168,33 +167,22 @@ INSERT INTO `monitor_result` (`id`, `monitors_id`, `monitor_result_ping`, `monit
 (46, 14, 7, 320, '2022-09-21 08:44:34'),
 (47, 13, 17, 635, '2022-09-21 08:44:37'),
 (48, 12, 56, 895, '2022-09-21 08:44:39'),
-(49, 11, 19, 4191, '2022-09-21 08:44:44'),
 (50, 12, 50, 886, '2022-09-21 10:34:30'),
 (51, 12, 42, 865, '2022-09-21 10:34:36'),
 (52, 12, 51, 1007, '2022-09-21 11:12:53'),
-(53, 11, 23, 4287, '2022-09-21 11:29:44'),
-(54, 11, 9, 3304, '2022-09-21 11:29:48'),
-(55, 11, 5, 4671, '2022-09-21 11:33:32'),
 (56, 12, 53, 1429, '2022-09-21 11:33:54'),
-(57, 11, 205, 6385, '2022-09-21 11:39:16'),
 (58, 14, 7, 311, '2022-09-21 11:39:21'),
 (59, 20, 19, 4168, '2022-09-21 11:40:12'),
 (60, 20, 13, 2987, '2022-09-21 11:40:18'),
 (61, 20, 29, 4032, '2022-09-21 15:07:38'),
-(62, 11, 19, 4116, '2022-09-21 15:09:06'),
-(63, 11, 9, 4035, '2022-09-21 15:10:19'),
 (64, 12, 54, 963, '2022-09-21 15:10:24'),
 (65, 20, 9, 3894, '2022-09-21 15:16:40'),
-(68, 11, 65, 4521, '2022-09-21 15:18:58'),
 (69, 25, 13, 3335, '2022-09-21 15:33:47'),
 (70, 20, 168, 3370, '2022-09-21 15:38:35'),
-(71, 11, 201, 4729, '2022-09-21 17:04:01'),
 (72, 20, 11, 4432, '2022-09-21 18:24:15'),
 (73, 20, 11, 3595, '2022-09-21 18:24:23'),
 (74, 25, 21, 5644, '2022-09-21 18:24:55'),
-(76, 11, 170, 3885, '2022-09-21 20:24:56'),
 (77, 20, 19, 3641, '2022-09-21 20:27:54'),
-(78, 11, 23, 5625, '2022-09-22 10:35:28'),
 (79, 12, 55, 973, '2022-09-22 10:35:34'),
 (80, 13, 13, 490, '2022-09-22 10:35:40'),
 (81, 25, 11, 2707, '2022-09-22 10:35:50'),
@@ -204,7 +192,9 @@ INSERT INTO `monitor_result` (`id`, `monitors_id`, `monitor_result_ping`, `monit
 (85, 22, 172, 351, '2022-09-22 10:39:11'),
 (86, 18, 17, 4404, '2022-09-22 10:39:19'),
 (87, 13, 10, 867, '2022-09-22 12:42:50'),
-(93, 35, 6, 633, '2022-09-22 14:50:59');
+(93, 35, 6, 633, '2022-09-22 14:50:59'),
+(95, 35, 22, 342, '2022-09-24 00:04:57'),
+(96, 40, 321, 4467, '2022-09-24 03:17:57');
 
 -- --------------------------------------------------------
 
@@ -216,7 +206,7 @@ CREATE TABLE `users` (
   `id` bigint(20) NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_email` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -276,25 +266,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `domain_info`
 --
 ALTER TABLE `domain_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `mailcode`
 --
 ALTER TABLE `mailcode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `monitors`
 --
 ALTER TABLE `monitors`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `monitor_result`
 --
 ALTER TABLE `monitor_result`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `users`
