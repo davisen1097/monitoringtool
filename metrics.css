@@ -1,9 +1,44 @@
 #latencyChart{
-    height:25em;
-    width:500px
+    height:20em;
+    width:500px;
+
+
+    
 }
 
 #loadtimeChart{
-    height:25em;
+    height:20em;
     width:500px
+
 }
+
+
+#monitorInfo{
+    text-align: center;
+    text-shadow: 1.5px 1.5px;
+    font-size: 30px;
+    font-style: italic;
+    color: rgb(61, 78, 3);
+    background-color: rgb(158, 148, 9);
+    border: 50px;
+    border-color: rgb(27, 36, 36);
+    border-style: groove;
+    
+}
+
+#chart{
+    /* text-align: center;
+    text-shadow: 1.5px 1.5px;
+    font-size: 30px;
+    font-style: italic;
+    color: rgb(102, 116, 54); */
+    background-color: rgb(158, 148, 9);
+    border: 50px;
+    border-color: rgb(27, 36, 36);
+    border-style: groove;
+    
+    
+}
+
+
+

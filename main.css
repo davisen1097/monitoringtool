@@ -1,26 +1,44 @@
 .topnav {
     overflow: hidden;
     background-color: #333;
+    border: 18px;
+    border-color: #aa9904;
+    border-style: groove;
   }
   
   .topnav a {
     float: left;
-    color: #f2f2f2;
+    color: #aa9904;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
   }
+
+  #logoutbutton{
+    background-color: #aa9904;
+    color: rgb(0, 0, 0);
+}
+
+#loginbutton{
+  background-color: #aa9904;
+  color: rgb(0, 0, 0);
+}
+
+#signupbutton{
+  background-color: #aa9904;
+  color: rgb(0, 0, 0);
+}
   
   .topnav a:hover {
-    background-color: #ddd;
+    background-color: #333;
     color: black;
-  }
+  } 
   
   .topnav a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
+    background-color: #333;
+    color: #aa9904;
+  } 
   
   .topnav-right {
     float: right;
@@ -42,8 +60,8 @@
     text-decoration-line: overline;
     font-size: 40px;
     font-style: oblique;
-    color: rgb(65, 87, 70);
-    background-color: rgb(255, 255, 255);
+    color: rgb(102, 116, 54);
+    text-shadow: 1.5px 1.5px;
 }
 
 #websitetitle{
@@ -51,6 +69,7 @@
   text-shadow: 10px;
   font-size: 50px;
   font-family: "Sofia";
+  text-shadow: 1.5px 1.5px;
   color: rgb(102, 116, 54);
   background-color: rgb(255, 255, 255);
 }
@@ -58,7 +77,7 @@
 
 #greeting{
   text-align: left;
-  text-shadow: 5px;
+  text-shadow: 1.5px 1.5px;
   font-size: 40px;
   font-style: italic;
   color: rgb(102, 116, 54);
@@ -80,7 +99,9 @@
   text-align: center;
   text-shadow: 5px;
   font-size: 30px;
+  text-shadow: 1.5px 1.5px;
   font-style: bold;
   color: rgb(28, 27, 87);
   background-color: rgb(255, 255, 255);
 }
+
