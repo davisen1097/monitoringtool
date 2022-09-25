@@ -86,6 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			height: auto;
 			padding: 20px;
 			margin-top: -100px;
+			border: 15px; 
+			border-color: #aa9904; 
+			border-style: groove;
 		}
 
 		.center {
