@@ -16,12 +16,12 @@
 #monitorInfo{
     text-align: center;
     text-shadow: 1.5px 1.5px;
-    font-size: 30px;
-    font-style: italic;
-    color: rgb(61, 78, 3);
-    background-color: rgb(158, 148, 9);
-    border: 50px;
-    border-color: rgb(27, 36, 36);
+    font-size: 25px;
+    font-family: cursive;
+    color: #aa9904;
+    background-color:#333;
+    border: 30px;
+    border-color: rgb(158, 148, 9);
     border-style: groove;
     
 }
@@ -32,9 +32,9 @@
     font-size: 30px;
     font-style: italic;
     color: rgb(102, 116, 54); */
-    background-color: rgb(158, 148, 9);
-    border: 50px;
-    border-color: rgb(27, 36, 36);
+    background-color:rgb(154 171 108 / 70%);
+    border: 30px;
+    border-color: rgb(158, 148, 9);
     border-style: groove;
     
     
