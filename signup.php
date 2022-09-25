@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			border-radius: 5px;
 			padding: 4px;
 			border: solid thin #aaa;
-			width: 100%;
+			width: 25em;
 		}
 		button:disabled,
 		button[disabled]{
@@ -65,10 +65,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		#box {
 
-			background-color: grey;
+			background-color: #333;
 			margin: auto;
-			width: 300px;
+			width: 350px;
 			padding: 20px;
+			border: 15px;
+    		border-color: #aa9904;
+   			border-style: groove;
 		}
 	</style>
 
@@ -110,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	<div id="box">
 
 		<form method="post">
-			<div style="font-size: 20px;margin: 10px;color: white;">Signup</div>
+			<div style="font-size: 20px;margin: 10px;color: #aa9904;">Signup</div>
 
 			<input id="email" type="text" name="email" placeholder="Enter Email" onfocusout="myFunctionemail()" ><br><br> 
 			<input id="username" type="text" name="user_name" placeholder="Enter Username" onfocusout="myFunction()" ><br><br>
@@ -119,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 			<input id="button" type="submit" value="Signup" /disabled><br><br>
 
-			<a href="login.html">Click to Login</a><br><br>
+			<!-- <a href="login.html">Click to Login</a><br><br> -->
 		</form>
 	</div>
 	<script>
