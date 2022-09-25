@@ -4,11 +4,10 @@
     <link rel="stylesheet" href="metrics.css" />
 </head>
 <body>
+    <section id="intro"><h2 id="monitorName"></h2> </section>
     <section id="chart">
         <div id="latencyChart"></div>
-        <div id="loadtimeChart"></div>
-
-        
+        <div id="loadtimeChart"></div>        
     </section>
     <section id="monitorInfo"> 
         <div id="countryCode"><label>Country Code: </label></div>
@@ -36,6 +35,7 @@
         var queryParams = {}
         location.search.substr(1).split("&").forEach(function(item) {queryParams[item.split("=")[0]] = item.split("=")[1]})
         console.log(queryParams);
+        $("#monitorName").html(`Monitor Name: ${queryParams['name']}`)
         $("#latencyChart").html(` '<object type="text/html" style="height: 100%; width: 35em" data="latencyChart.php?id=${queryParams['id']}" ></object>'`)
         $("#loadtimeChart").html(` '<object type="text/html" style="height: 100%; width: 35em" data="loadtimeChart.php?id=${queryParams['id']}" ></object>'`)
 
@@ -52,7 +52,6 @@
             document.getElementById("certIssuer").innerHTML += domainInfo.domain_certIssuer;
             document.getElementById("localeRank").innerHTML += domainInfo.domain_localRank;
             document.getElementById("globalRank").innerHTML += domainInfo.domain_globalRank;
-
         });
 
     }

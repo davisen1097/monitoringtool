@@ -83,8 +83,7 @@
             <br> 
             <button onclick="ping()">Ping</button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <button onclick="deletemonitor()">Remove</button>&nbsp&nbsp&nbsp&nbsp
-            <a href=<?php echo "metrics.html?url=".$url."&id=".$id?> target="_blank" rel="noopener noreferrer" >view metrics</a>
-
+            <a href=<?php echo "metrics.html?url=".$url."&id=".$id."&name=".$name?> target="_blank" rel="noopener noreferrer" >view metrics</a>
         </div>
         <script>
             function ping() {
@@ -112,7 +111,7 @@
                     }
                 };
 
-                var queryParams = `monitor=<?php echo $id ?>&urlToPing=<?php echo $url ?>`
+                var queryParams = `monitor=<?php echo $id ?>&urlToPing=<?php echo $url ?>&monitorname=<?php echo $name ?>`;
                 var link = `ping.php?${queryParams}`;
 
                 console.log(link)
