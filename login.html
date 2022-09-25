@@ -21,17 +21,20 @@
 
             padding: 10px;
             width: 100px;
-            color: white;
-            background-color: lightblue;
+            color:  rgb(0, 0, 0);
+            background-color:#aa9904;
             border: none;
         }
 
         #box {
 
-            background-color: grey;
+            background-color: #333;
             margin: auto;
             width: 300px;
             padding: 20px;
+            border: 15px;
+            border-color: #aa9904;
+            border-style: groove;
         }
     </style>
 
@@ -68,14 +71,14 @@
     </style>
 
     <div id="box">
-        <div style="font-size: 20px;margin: 10px;color: white;">Login</div>
+        <div style="font-size: 20px;margin: 10px;color: #aa9904;">Login</div>
 
         <input id="username" type="text" placeholder ="Enter Username" name="user_name"><br><br>
         <input id="pword" placeholder ="Enter Password" type="password" name="password"><br><br>
 
         <input id="button" type="submit" value="Login" onclick="loginfuction()"><br><br>
 
-        <a href="signup.php">Click to Register</a><br><br>
+        <!-- <a href="signup.php">Click to Register</a><br><br> -->
     </div>
     
 <script>
