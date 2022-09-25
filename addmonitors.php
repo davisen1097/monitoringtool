@@ -73,14 +73,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 			padding: 10px;
 			width: 100px;
-			color: white;
-			background-color: lightblue;
+			color: black;
+			background-color: #aa9904;
 			border: none;
 		}
 
 		#box {
 
-			background-color: grey;
+			background-color: #333;
 			margin: auto;
 			width: 50%;
 			height: auto;
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	<div id="box">
 
 		<form method="post">
-			<div style="font-size: 20px;margin: 10px;color: white;">Add Monitor</div>
+			<div style="font-size: 20px;margin: 10px;color: #aa9904;">Add Monitor</div>
 
 			<input id="monitorname" type="text" name="name" placeholder="Enter Monitor name" onfocusout="myFunction()"><br><br>
 			<input id="text" type="text" name="url" placeholder="Enter Monitor Url"><br><br>
