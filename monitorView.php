@@ -83,7 +83,7 @@
             <br> 
             <button onclick="ping()">Ping</button> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <button onclick="deletemonitor()">Remove</button>&nbsp&nbsp&nbsp&nbsp
-            <a href=<?php echo "metrics.html?url=".$url."&id=".$id."&name=".$name?> target="_blank" rel="noopener noreferrer" >view metrics</a>
+            <a href=<?php echo "metrics.html?url=".$url."&id=".$id."&name=".rawurlencode($name)?> target="_blank" rel="noopener noreferrer" >view metrics</a>
         </div>
         <script>
             function ping() {

@@ -33,7 +33,7 @@
         {
             var domainInfo;
             var queryParams = {}
-            location.search.substr(1).split("&").forEach(function(item) {queryParams[item.split("=")[0]] = item.split("=")[1]})
+            location.search.substr(1).split("&").forEach(function(item) {queryParams[item.split("=")[0]] = decodeURI(item.split("=")[1])})
             console.log(queryParams);
             $("#monitorName").html(`Monitor Name: ${queryParams['name']}`)
             $("#latencyChart").html(`<object type="text/html" style="height: 30em; width: 45em" title="metrics chart" data="latencyChart.php?id=${queryParams['id']}" ></object>`)
