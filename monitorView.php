@@ -23,32 +23,53 @@
 
                 padding: 10px;
                 width: 100px;
-                color: white;
-                background-color: lightblue;
+                color: black;
+                background-color: #aa9904;
                 border: none;
             }
 
             label {
                 display: block;
+               
             }
 
             #box {
 
-                background-color: grey;
+                background-color: #333;
                 margin: auto;
                 width: 50%;
+                height: 90px;
                 padding: 20px;
+                font-family: cursive;
+                font-size: 15px;
+                color:#aa9904 ;
+                
+            
+            }
+
+            a{
+
+                color:#aa9904 ;
+                font-family: cursive;
+                font-size: 20px;
+
             }
             table {
                 font-family: arial, sans-serif;
                 border-collapse: collapse;
                 width: 100%;
+                
                 }
 
                 td, th {
-                border: 1px solid #dddddd;
+                border: 3px solid #dddddd;
+                border-color: white;
                 text-align: left;
+                font-family: cursive;
                 padding: 8px;
+                border: 8px;
+                border-color: #aa9904;
+                border-style: groove;
                 }
 
                 tr:nth-child(even) {
@@ -106,7 +127,7 @@
                 <table>
                     <tr>
                         <th>URL</th>
-                        <th>Ping</th>
+                        <th>Latency</th>
                         <th>Load Time</th>
                     </tr>
                     <tr>
