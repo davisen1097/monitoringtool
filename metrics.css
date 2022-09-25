@@ -1,9 +1,7 @@
 #latencyChart{
-    height:20em;
-    width:500px;
-
-
-    
+    display: block;
+    margin-left: 12em;
+    margin-right: auto;
 }
 
 #loadtimeChart{
@@ -32,7 +30,8 @@
     font-size: 30px;
     font-style: italic;
     color: rgb(102, 116, 54); */
-    background-color:white;
+    height: 28em;
+    background-color:rgb(232, 238, 240);
     border: 30px;
     border-color: rgb(158, 148, 9);
     border-style: groove;
