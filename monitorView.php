@@ -37,7 +37,7 @@
 
                 background-color: #333;
                 margin: auto;
-                width: 50%;
+                width: 55%;
                 height: 90px;
                 padding: 20px;
                 font-family: cursive;
@@ -126,8 +126,8 @@
                 <table>
                     <tr>
                         <th>URL</th>
-                        <th>Latency</th>
-                        <th>Load Time</th>
+                        <th>Latency(m/s)</th>
+                        <th>Load Time(m/s)</th>
                     </tr>
                     <tr>
                         <td>${content[0]}</td>
