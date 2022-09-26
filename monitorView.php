@@ -37,7 +37,7 @@
 
                 background-color: #333;
                 margin: auto;
-                width: 55%;
+                width: 65%;
                 height: 90px;
                 padding: 20px;
                 font-family: cursive;
